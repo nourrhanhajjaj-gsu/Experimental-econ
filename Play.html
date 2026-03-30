@@ -1,0 +1,91 @@
+{% extends "otree/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Two-Players - Rochambeau
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+.otree-title{
+    text-align:center;
+}
+
+.center-box{
+    text-align:center;
+}
+
+.debug-info {
+    display: none !important;
+}
+
+.rps-container{
+    text-align:center;
+}
+
+.rps-option{
+    display:inline-block;
+    margin:20px;
+}
+
+.rps-option img{
+    width:130px;
+    cursor:pointer;
+    border:3px solid transparent;
+    border-radius:10px;
+    transition:0.2s;
+}
+
+.rps-option img:hover{
+    transform:scale(1.05);
+}
+
+input[type="radio"]{
+    display:none;
+}
+
+input[type="radio"]:checked + label img{
+    border:3px solid blue;
+}
+</style>
+
+<p> Round {{ player.round_number }} of {{ C.NUM_ROUNDS }}</p>
+<p>Click one of the images below to choose your move.</p>
+
+<div class="rps-container">
+
+<div class="rps-option">
+<input type="radio" name="choice" id="rock" value="Rock" required>
+<label for="rock">
+<img src="{% static 'rock.png' %}" width= "140" height= "120">
+    <div class="rps-label">Rock</div>
+</label>
+</div>
+
+<div class="rps-option">
+<input type="radio" name="choice" id="paper" value="Paper">
+<label for="paper">
+<img src="{% static 'paper.png' %}" width= "140" height= "120">
+    <div class="rps-label">Paper</div>
+</label>
+</div>
+
+<div class="rps-option">
+<input type="radio" name="choice" id="scissors" value="Scissors">
+<label for="scissors">
+<img src="{% static 'scissors.png' %}" width= "140" height= "120">
+    <div class="rps-label">Scissors</div>
+</label>
+</div>
+
+</div>
+
+<br>
+
+<center>
+<button class="btn btn-primary">Submit</button>
+</center>
+
+{% endblock %}

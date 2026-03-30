@@ -1,0 +1,74 @@
+{% extends "otree/Page.html" %}
+{% load otree %}
+
+{% block title %}
+Final Results
+{% endblock %}
+
+{% block content %}
+
+<h3>Game Summary</h3>
+
+<table width="80%" align="center">
+
+<tr>
+
+<td align="center">
+<strong><font size="4">Total rounds</font></strong><br>
+{{ total_rounds }}
+</td>
+
+<td align="center">
+<strong><font size="4">Wins</font></strong><br>
+{{ wins }}
+</td>
+
+<td align="center">
+<strong><font size="4">Ties</font></strong><br>
+{{ ties }}
+</td>
+
+<td align="center">
+<strong><font size="4">Losses</font></strong><br>
+{{ losses }}
+</td>
+
+</tr>
+
+</table>
+
+<br>
+
+<p align="center">
+<strong>Total payoff:</strong> {{ total_payoff }} points
+</p>
+
+<br>
+
+<h4>Round Details</h4>
+
+<table class="table">
+    <tr>
+        <th>Round</th>
+        <th>Your Choice</th>
+        <th>Opponent Choice</th>
+        <th>Result</th>
+        <th>Payoff</th>
+    </tr>
+
+    {% for r in rounds %}
+    <tr>
+        <td>{{ r.round_number }}</td>
+        <td>{{ r.my_choice }}</td>
+        <td>{{ r.opp_choice }}</td>
+        <td>{{ r.result }}</td>
+        <td>{{ r.payoff }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<center>
+<button class="btn btn-primary">Next</button>
+</center>
+
+{% endblock %}
